@@ -4,42 +4,93 @@
 # Bruno Domingues
 # Pietro
 
+# Declarando bibliotecas
+from random import randint, choice
 
-# Declarando biblioteca
-import time
-from random import *
+# Armas
+armas = {
+    1: {"nome": "Adaga", "min_dmg": 1, "max_dmg": 5},
+    2: {"nome": "Espada", "min_dmg": 5, "max_dmg": 10},
+    3: {"nome": "Machado", "min_dmg": 10, "max_dmg": 20}
+}
+
+# Armaduras
+armaduras = {
+    1: {"tipo": "fraca", "abs_fisico": 0.1, "abs_magica": 0.05},
+    2: {"tipo": "media", "abs_fisico": 0.2, "abs_magica": 0.10},
+    3: {"tipo": "forte", "abs_fisico": 0.3, "abs_magica": 0.15},
+}
+
+class Hero:
+    def __init__(self, name):
+        self.name = name
+        self.hp = 200
+        self.mana = 50
+        self.weapon = randint(1, 3)
+        self.armor = randint(1, 3)
+        self.hpotion = 5
+        self.mpotion = 2
+        self.hrestore = 20
+        self.mrestore = 10
+
+
+class Villain:
+    def __init__(self, name, hweapon, harmor):
+        self.name = name
+        self.hp = 200
+        self.mana = 50
+        self.weapon = randint(1, hweapon)
+        self.armor = randint(1, harmor)
+        self.hpotion = randint(5, 10)
+        self.mpotion = randint(2, 5)
+        self.hrestore = 20
+        self.mrestore = 10
+
 
 # Nome do personagem
-nome = input('Qual o seu nome grande heroi(a)? ')
+hnome = input('Escolha um nome para seu personagem: ')
+heroi = Hero(hnome)
+
+print(f"Olá {heroi.name}!\n")
+print("Informações iniciais:")
+print(f"Pontos de vida: {heroi.hp}")
+print(f"Pontos de mana: {heroi.mana}")
+arma_heroi = armas[heroi.weapon]
+print(f"Sua arma é: {arma_heroi['nome']}. Ela dá dano entre {arma_heroi['min_dmg']} e {arma_heroi['max_dmg']} HP!")
+armadura_heroi = armaduras[heroi.armor]
+print(f"Sua armadura é do tipo {armadura_heroi['tipo']}. Ela absorve {armadura_heroi['abs_fisico']*100}% de dano fisico e {armadura_heroi['abs_magica']*100}% de dano magico!")
+print(f"Você tem {heroi.hpotion} poções de vida que restauram {heroi.hrestore} pontos de vida cada e {heroi.mpotion} que restauram {heroi.mrestore} de mana cada!")
+
+def print_status(h):
+    print("Status: \n")
+    print(f"Health points: {h}")
 
 
+class Villain:
+    def __init__(self, name, hweapon, harmor):
+        self.name = name
+        self.hp = 200
+        self.mana = 50
+        self.weapon = randint(1, hweapon)
+        self.armor = randint(1, harmor)
 
-#Pontos de vida
-HP = 200
-
-#Pontos de magia
-mana = 50
 
 #Catalogo de dano
 def calc_dmg(id_weapon):
-    if id_weapon == 1: # Machado
-        return randint(10, 20)         #[i for i in range(0,15,1)]
-    elif id_weapon == 2: # Espada
-        return randint(5, 10)           #([i for i in range(15,25,1)]
-    elif id_weapon == 3: # Adaga
-        return randint(1, 5)              #[i for i in range(4,45,1)]
+    if id_weapon == 1:  # Machado
+        return randint(10, 20)  # [i for i in range(0,15,1)]
+    elif id_weapon == 2:  # Espada
+        return randint(5, 10)  # ([i for i in range(15,25,1)]
+    elif id_weapon == 3:  # Adaga
+        return randint(1, 5)  # [i for i in range(4,45,1)]
 
 #Armas
-armas = {
-    1:'Machado',
-    2:'Espada',
-    3:'Adaga'
-}
+
 
 #Armadura
 armadura = {
-    'Magica':0.05,
-    'Fisica':0.1,
+    'Magica': 0.05,
+    'Fisica': 0.1,
 }
 
 
@@ -59,49 +110,3 @@ def use_magic(mana):
         out = choice(casos_magia)
 
         return mana, out
-
-#escolha da arma
-arma = randint(1,3)
-dano_da_arma = calc_dmg(arma)
-
-#Poções
-qtd_hp = 5
-qtd_mana = 2
-pocao_hp = 20
-pocao_mana = 10
-
-dano_das_armas = {
-    
-}
-
-print('Olá, {}. Voce recebeu a arma {}'.format(nome, armas[arma]))
-time.sleep(1)
-print('Sua vida é {} HP'.format(HP))
-time.sleep(1)
-print('Sua arma causa de {} até {} de dano físico'.format(min(dano_da_arma), max(dano_da_arma)))
-time.sleep(1)
-print('Sua armadura anula {} de dano magico e {} de dano físico.'.format(armadura['Magica'],armadura['Fisica']))
-time.sleep(1)
-print('Você iniciará sua jornada com ')
-
-while True:
-    
-    start = input('Deseja começar ? ')
-    
-    if start == 's':
-        pass
-    else:
-        break
-    
-    mapa = input ('Aonde vc esta agora ? ')
-    print('Bem vindo a {}'.format(mapa))
-
-    
-    
-    
-    
-
-
-
-
-
