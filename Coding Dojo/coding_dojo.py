@@ -35,7 +35,16 @@ class Hero:
     def ataque(self):
         dano = armas[self.weapon]
         return dano
-
+    def ataque_mag(self, mana, Villain):
+        mana, ataque = use_magic(self.mana)
+        if ataque == 1:
+            self.hp -= 10
+        elif ataque == 2:
+            pass
+        elif ataque == 3:
+            Villain.hp -= 25
+        elif ataque == 4:
+            Villain.hp -= 50
 
 
 class Villain:
@@ -52,13 +61,17 @@ class Villain:
     def ataque_fis(self):
         dano = armas[self.weapon]
         return dano
-    def ataque_mag(self,self.mana):
+    def ataque_mag(self, mana, Hero):
         mana, ataque = use_magic(self.mana)
         if ataque == 1:
             self.hp -= 10
         elif ataque == 2:
-            return
-
+            pass
+        elif ataque == 3:
+            Hero.hp -= 25
+        elif ataque == 4:
+            Hero.hp -= 50
+            
 
 # Caso 1: self damage - 10%
 # Caso 2: nada acontece - 20%
@@ -130,6 +143,15 @@ def use_magic(mana):
         return mana, out
 
 print('Escolha sua ação')
-print('Ataque físico (ataque_fis), ataque magico (ataque_mag), poções')
-acao = input()
-heroi.acao
+
+opcao = input('Ataque ou poção ? ')
+if opcao == 'ataque':
+    tipo = input ('Ataque fisico ou magico ? ')
+    if tipo == 'fisico':
+        dano = Hero.ataque()
+        print(f'Vida do vilão {Villain.hp-dano}')
+    else:
+        dano = Hero.ataque_mag(self.mana)
+        print(f'Vida do vilão {Villain.hp-dano}')
+        
+        
