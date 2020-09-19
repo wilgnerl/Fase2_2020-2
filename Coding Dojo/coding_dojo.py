@@ -39,4 +39,4 @@ armadura = {
 
 #Danos
 
-#
+def dano_magico(magia)
