@@ -65,18 +65,24 @@ arma = randint(1,3)
 dano_da_arma = calc_dmg(arma)
 
 #Poções
-pocao_hp = 10
-pocao_mana = 20
+qtd_hp = 5
+qtd_mana = 2
+pocao_hp = 20
+pocao_mana = 10
 
-
+dano_das_armas = {
+    
+}
 
 print('Olá, {}. Voce recebeu a arma {}'.format(nome, armas[arma]))
 time.sleep(1)
 print('Sua vida é {} HP'.format(HP))
 time.sleep(1)
-print('Sua arma começa causando {}'.format(dano_da_arma))
+print('Sua arma causa de {} até {} de dano físico'.format(min(dano_da_arma), max(dano_da_arma)))
 time.sleep(1)
 print('Sua armadura anula {} de dano magico e {} de dano físico.'.format(armadura['Magica'],armadura['Fisica']))
+time.sleep(1)
+print('Você iniciará sua jornada com ')
 
 while True:
     
@@ -89,6 +95,8 @@ while True:
     
     mapa = input ('Aonde vc esta agora ? ')
     print('Bem vindo a {}'.format(mapa))
+
+    
     
     
     
