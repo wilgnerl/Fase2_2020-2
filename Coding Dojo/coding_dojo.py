@@ -22,7 +22,7 @@ armaduras = {
 }
 
 class Hero:
-    def __init__(self, name):
+    def __init__(self, name, armas):
         self.name = name
         self.hp = 200
         self.mana = 50
@@ -32,6 +32,10 @@ class Hero:
         self.mpotion = 2
         self.hrestore = 20
         self.mrestore = 10
+    def ataque(self):
+        dano = armas[self.weapon]
+        return dano
+
 
 
 class Villain:
@@ -45,11 +49,25 @@ class Villain:
         self.mpotion = randint(2, 5)
         self.hrestore = 20
         self.mrestore = 10
+    def ataque_fis(self):
+        dano = armas[self.weapon]
+        return dano
+    def ataque_mag(self,self.mana):
+        mana, ataque = use_magic(self.mana)
+        if ataque == 1:
+            self.hp -= 10
+        elif ataque == 2:
+            return
 
+
+# Caso 1: self damage - 10%
+# Caso 2: nada acontece - 20%
+# Caso 3: dano normal - 50%
+# Caso 4: dano critico - 20%
 
 # Nome do personagem
 hnome = input('Escolha um nome para seu personagem: ')
-heroi = Hero(hnome)
+heroi = Hero(hnome, armas)
 
 print(f"Olá {heroi.name}!\n")
 print("Informações iniciais:")
@@ -110,3 +128,8 @@ def use_magic(mana):
         out = choice(casos_magia)
 
         return mana, out
+
+print('Escolha sua ação')
+print('Ataque físico (ataque_fis), ataque magico (ataque_mag), poções')
+acao = input()
+heroi.acao
