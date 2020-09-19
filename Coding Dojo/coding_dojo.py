@@ -28,9 +28,9 @@ def calc_dmg(id_weapon):
 
 #Armas
 armas = {
-    'Machado': 1,
-    'Espada': 2,
-    'Adaga': 3
+    1:'Machado',
+    2:'Espada',
+    3:'Adaga'
 }
 
 #Armadura
@@ -57,3 +57,10 @@ def use_magic(mana):
 
         return mana, out
 
+#escolha da arma
+arma = randint(1,3)
+dano_da_arma = calc_dmg(arma)
+
+print('Olá, {}. Voce recebeu a arma {} . Sua vida atual '.format(nome, armas[arma]))
+print('Sua arma causa {}'.format(dano_da_arma))
+print('Sua armadura anula {} de dano magico e {} de dano físico.',format(armadura['Magica'],armadura['Fisica']))
