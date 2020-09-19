@@ -6,10 +6,13 @@
 
 
 # Declarando biblioteca
+import time
 from random import *
 
 # Nome do personagem
 nome = input('Qual o seu nome grande heroi(a)? ')
+
+
 
 #Pontos de vida
 HP = 200
@@ -61,6 +64,36 @@ def use_magic(mana):
 arma = randint(1,3)
 dano_da_arma = calc_dmg(arma)
 
-print('Olá, {}. Voce recebeu a arma {} . Sua vida atual '.format(nome, armas[arma]))
-print('Sua arma causa {}'.format(dano_da_arma))
-print('Sua armadura anula {} de dano magico e {} de dano físico.',format(armadura['Magica'],armadura['Fisica']))
+#Poções
+pocao_hp = 10
+pocao_mana = 20
+
+
+
+print('Olá, {}. Voce recebeu a arma {}'.format(nome, armas[arma]))
+time.sleep(1)
+print('Sua vida é {} HP'.format(HP))
+time.sleep(1)
+print('Sua arma começa causando {}'.format(dano_da_arma))
+time.sleep(1)
+print('Sua armadura anula {} de dano magico e {} de dano físico.'.format(armadura['Magica'],armadura['Fisica']))
+
+while True:
+    
+    start = input('Deseja começar ? ')
+    
+    if start == 's':
+        pass
+    else:
+        break
+    
+    mapa = input ('Aonde vc esta agora ? ')
+    print('Bem vindo a {}'.format(mapa))
+    
+    
+    
+
+
+
+
+
